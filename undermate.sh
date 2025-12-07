@@ -1,10 +1,10 @@
 USERNAME=$1
 
 if [ ! -d $USERNAME ]; then
-  chessdump $USERNAME
+  . ./chessdump.sh $USERNAME
 fi
 
-for f in $USERNAME/*.json; do
+for f in ${GAMES_DIR}/${USERNAME}/*.json; do
   jq -r '
     .games[]
     | select(.pgn | test("=[nbr]#"; "i"))

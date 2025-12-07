@@ -6,8 +6,12 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
+GAMES_DIR="games"
+export GAMES_DIR
+
 USERNAME="$1"
-OUT_DIR="${USERNAME}"
+OUT_DIR="${GAMES_DIR}/${USERNAME}"
+
 
 # Require jq (just for extracting the list of monthly archive URLs)
 if ! command -v jq >/dev/null 2>&1; then
